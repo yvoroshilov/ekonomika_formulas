@@ -1,0 +1,24 @@
+{
+  "topic": "Topic1",
+  "variables": {
+    "OSvved": {
+      "latex": "ОС_{введ}",
+      "description": "Стоимость введённых основных средств"
+    },
+    "OSvyb": {
+      "latex": "ОС_{выб}",
+      "description": "Стоимость выбывших основных средств"
+    },
+    "OSng": {
+      "latex": "ОС_{нг}",
+      "description": "Стоимость на начало года"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ K_{пр}=\\frac{|{{ OSvved }} - {{ OSvyb }}|}{ {{ OSng }} } $$",
+      "description": "Коэффициент прироста",
+      "varIds": ["OSvved", "OSvyb", "OSng"]
+    }
+  ]
+}
