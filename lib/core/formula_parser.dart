@@ -39,7 +39,6 @@ class FormulaParser {
 
       Tuple2<String, List<Formula>> topic = Tuple2(topicName, []);
       for (Map<String, dynamic> formulaJsonContent in curFormulasJsonContent) {
-        String name = formulaJsonContent['name'];
         String moustachedLatex = formulaJsonContent['latex'];
         String description = formulaJsonContent['description'];
         List<String> variableIds = (formulaJsonContent['varIds'] as List<dynamic>)

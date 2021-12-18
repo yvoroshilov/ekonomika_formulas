@@ -72,7 +72,13 @@ class _TopicsPageState extends State<TopicsPage> {
                         TeXView(
                           loadingWidgetBuilder: (ctxt) => CircularProgressIndicator(),
                           renderingEngine: renderingEngine,
-                          child: TeXViewDocument(formulas[0].latex),
+                          child: TeXViewColumn(
+                            children: [
+                              TeXViewDocument(formulas[0].latex),
+                              TeXViewDocument(formulas[0].latex),
+                              TeXViewDocument(formulas[0].latex),
+                            ],
+                          ),
                         ),
                       ],
                       trailing: Icon(Icons.arrow_drop_down_circle_outlined),
