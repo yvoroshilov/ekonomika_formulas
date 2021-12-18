@@ -60,6 +60,10 @@ class _TopicsPageState extends State<TopicsPage> {
                   itemBuilder: (context, index) {
                     String topic = topics[index].item1;
                     List<Formula> formulas = topics[index].item2;
+                    List<TeXViewDocument> texDocs = [];
+                    for (Formula formul in formulas) {
+                      texDocs.add(TeXViewDocument(formul.latex));
+                    }
                     return ExpansionTile(
                       title: Container(
                         width: double.infinity,
@@ -73,11 +77,7 @@ class _TopicsPageState extends State<TopicsPage> {
                           loadingWidgetBuilder: (ctxt) => CircularProgressIndicator(),
                           renderingEngine: renderingEngine,
                           child: TeXViewColumn(
-                            children: [
-                              TeXViewDocument(formulas[0].latex),
-                              TeXViewDocument(formulas[0].latex),
-                              TeXViewDocument(formulas[0].latex),
-                            ],
+                            children: texDocs,
                           ),
                         ),
                       ],
