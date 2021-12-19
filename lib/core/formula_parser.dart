@@ -6,8 +6,9 @@ import 'package:tuple/tuple.dart';
 
 class FormulaParser {
 
-  Future<List<Tuple2<String, List<Formula>>>> parse() async {
+  Future<Tuple2<List<Tuple2<String, List<Formula>>>, List<Variable>>> parse() async {
     List<Tuple2<String, List<Formula>>> formulas = [];
+    List<Variable> allVars = [];
     // >> To get paths you need these 2 lines
     final manifestContent = await rootBundle.loadString('AssetManifest.json');
 
@@ -35,6 +36,7 @@ class FormulaParser {
           jsonVariableContent['description'],
         );
       }
+      allVars.addAll(globalVariables.values);
 
 
       Tuple2<String, List<Formula>> topic = Tuple2(topicName, []);
@@ -46,26 +48,16 @@ class FormulaParser {
           .toList();
 
         Map<String, Variable> variables = findVariables(variableIds, globalVariables);
-        String latex = renderMoustache(moustachedLatex, variables);
 
-        topic.item2.add(Formula(
-          latex,
+        topic.item2.add(Formula.raw(
+          moustachedLatex,
           description,
           variables: variables,
         ));
       }
       formulas.add(topic);
     }
-    return formulas;
-  }
-
-  String renderMoustache(String template, Map<String, Variable> variables) {
-    Template templ = Template(template);
-    Map<String, String> values = {};
-    for (MapEntry<String, Variable> varr in variables.entries) {
-      values[varr.key] = varr.value.latex;
-    }
-    return templ.renderString(values);
+    return Tuple2(formulas, allVars);
   }
 
   Map<String, Variable> findVariables(List<String> variableIds, Map<String, Variable> globalVariables) {
@@ -79,14 +71,41 @@ class FormulaParser {
 }
 
 class Formula {
-  Formula(this.latex, this.description, {required this.variables});
-  final String latex;
-  final String description;
-  final Map<String, Variable> variables;
+  Formula(this.latex, this.description, this._raw, {required this.variables});
+  Formula.raw(String moustachedLatex, this.description, {required this.variables}) {
+    _raw = moustachedLatex;
+    latex = _renderMoustache(moustachedLatex, variables);
+  }
+
+  late String latex;
+  late String description;
+  late String _raw;
+  late Map<String, Variable> variables;
+
+  String _renderMoustache(String template, Map<String, Variable> variables) {
+    Template templ = Template(template);
+    Map<String, String> values = {};
+    for (MapEntry<String, Variable> varr in variables.entries) {
+      values[varr.key] = varr.value.latex;
+    }
+    return templ.renderString(values);
+  }
+
+  Formula getWithHidden(String varId) {
+    Map<String, Variable> newVars = Map.of(variables);
+    newVars[varId] = Variable.hiddenVariable;
+    return Formula.raw(
+      _raw,
+      description,
+      variables: newVars,
+    );
+  }
 }
 
 class Variable {
   Variable(this.id, this.latex, this.description);
+
+  static final hiddenVariable = Variable('HIDDEN', r'?', '');
 
   final String id;
   final String latex;

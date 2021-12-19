@@ -2,9 +2,16 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ekonomika/colors.dart';
 import 'package:ekonomika/main_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:tuple/tuple.dart';
 
-void main() {
+import 'core/formula_parser.dart';
+
+
+late Tuple2<List<Tuple2<String, List<Formula>>>, List<Variable>> mainData;
+
+void main() async {
   runApp(const MyApp());
+  mainData = await FormulaParser().parse();
 }
 
 class MyApp extends StatelessWidget {

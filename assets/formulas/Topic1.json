@@ -1,24 +1,63 @@
 {
   "topic": "Topic1",
   "variables": {
-    "OSvved": {
-      "latex": "ОС_{введ}",
-      "description": "Стоимость введённых основных средств"
+    "OSperv": {
+      "latex": "ОС_{перв}",
+      "description": "Первоначальная стоимость основных средств"
     },
-    "OSvyb": {
-      "latex": "ОС_{выб}",
-      "description": "Стоимость выбывших основных средств"
+    "C": {
+      "latex": "Ц",
+      "description": "Цена"
     },
-    "OSng": {
-      "latex": "ОС_{нг}",
-      "description": "Стоимость на начало года"
+    "TZR": {
+      "latex": "ТЗР",
+      "description": "Транспортно-изготовительные расходы"
+    },
+    "SMR": {
+      "latex": "СМР",
+      "description": "Строительно-монтажные работы"
+    },
+    "OSvost": {
+      "latex": "ОС_{вост}",
+      "description": "Восстановительная стоимость основных средств"
+    },
+    "Kpereocenki": {
+      "latex": "К_{переоценки}",
+      "description": "Коэффициент переоценки"
+    },
+    "OSost": {
+      "latex": "ОС_{ост}",
+      "description": "Остаточная стоимость основных средств"
+    },
+    "AO": {
+      "latex": "АО",
+      "description": "Амортизационные отчисления (износ)"
+    },
+    "Na": {
+      "latex": "Н_{а}",
+      "description": "Норма амортизации"
     }
   },
   "formulas": [
     {
-      "latex": "$$ K_{пр}=\\frac{|{{ OSvved }} - {{ OSvyb }}|}{ {{ OSng }} } $$",
-      "description": "Коэффициент прироста",
-      "varIds": ["OSvved", "OSvyb", "OSng"]
+      "latex": "$$ {{ OSperv }}={{ C }} + {{ TZR }} + {{ SMR }}  $$",
+      "description": "",
+      "varIds": ["OSperv", "TZR", "SMR", "C"]
+    },
+    {
+      "latex": "$$ {{ OSvost }}={{ OSperv }} + {{ Kpereocenki }} $$",
+      "description": "",
+      "varIds": ["OSperv", "Kpereocenki", "OSvost"]
+    },
+    {
+      "latex": "$$ {{ OSost }}={{ OSperv }} - {{ AO }}(И) $$",
+      "description": "",
+      "varIds": ["OSost", "OSperv", "AO"]
+    },
+    {
+      "latex": "$$ {{ AO }}=\\frac{ {{ Na }} + {{ OSperv }} }{ 100\\% } $$",
+      "description": "",
+      "varIds": ["AO", "Na", "OSperv"]
     }
   ]
 }

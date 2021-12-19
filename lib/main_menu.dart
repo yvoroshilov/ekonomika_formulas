@@ -1,8 +1,9 @@
 import 'package:ekonomika/colors.dart';
-import 'package:ekonomika/core/formula_parser.dart';
 import 'package:ekonomika/topics.dart';
 import 'package:ekonomika/util_ui.dart';
 import 'package:flutter/material.dart';
+
+import 'game.dart';
 
 class MainMenu extends StatefulWidget {
   const MainMenu({Key? key}) : super(key: key);
@@ -49,7 +50,12 @@ class _MainMenuState extends State<MainMenu> {
                   ),
                 ),
                 onTap: () {
-                  FormulaParser().parse();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const GamePage(
+                      max: 10,
+                    )),
+                  );
                 },
               ),
             ),

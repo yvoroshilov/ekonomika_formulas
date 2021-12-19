@@ -38,6 +38,7 @@ dependencies:
   flutter_tex: ^4.0.3+1
   tuple: ^2.0.0
   mustache_template: ^2.0.0
+  percent_indicator: ^3.4.0
 
 dev_dependencies:
   flutter_test:
