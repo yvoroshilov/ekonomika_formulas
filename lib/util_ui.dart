@@ -5,6 +5,7 @@ class MyCard extends StatelessWidget {
     Key? key,
     required this.width,
     required this.height,
+    this.margin = const EdgeInsets.all(0),
     this.decoration,
     required this.child,
     required this.onTap,
@@ -13,6 +14,7 @@ class MyCard extends StatelessWidget {
   final double width;
   final double height;
   final Decoration? decoration;
+  final EdgeInsets margin;
   final Widget child;
   final void Function() onTap;
   final BorderRadius br = const BorderRadius.all(Radius.circular(10));
@@ -22,6 +24,7 @@ class MyCard extends StatelessWidget {
     return Container(
       width: width,
       height: height,
+      margin: margin,
       decoration: decoration,
       child: ClipRRect(
         borderRadius: br,

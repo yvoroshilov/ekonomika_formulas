@@ -1,12 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ekonomika/core/random_formula.dart';
 import 'package:ekonomika/main.dart';
+import 'package:ekonomika/util_ui.dart';
 import 'package:ekonomika/win_screen.dart';
 import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tex/flutter_tex.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:tuple/tuple.dart';
 
 import 'colors.dart';
@@ -39,6 +39,7 @@ class _GamePage extends State<GamePage> {
   List<TeXViewWidget> variants = [];
   List<Formula> excludedFormulas = [];
 
+  List<Widget> progressComponents = [];
   int curStep = 1;
   int guessedNumber = 0;
   bool lastGuessWin = false;
@@ -63,7 +64,7 @@ class _GamePage extends State<GamePage> {
 
     vars = randForm.getRandomVariables(4, allVars, [hiddenVar]);
     vars.add(hiddenVar);
-    // vars.shuffle();
+    vars.shuffle();
 
     hints = [];
     for (MapEntry<String, Variable> entry in hiddenFormula.variables.entries) {
@@ -75,7 +76,24 @@ class _GamePage extends State<GamePage> {
         ));
       }
     }
+  }
 
+  void addProgressComponent(BuildContext context, double fullMargin, bool win) {
+    double componentWidth = (MediaQuery.of(context).size.width - fullMargin) / widget.max;
+    progressComponents.add(
+      Stack(
+        children: [
+          Container(
+            width: componentWidth,
+            color: win ? Colors.green : Colors.red,
+            child: Align(
+              alignment: Alignment.center,
+              child: Text(curStep.toString()),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -214,167 +232,178 @@ class _GamePage extends State<GamePage> {
       body: Column(
         children: [
           Container(
+            height: 35,
             padding: const EdgeInsets.all(8),
-            child: LinearPercentIndicator(
-              animation: true,
-              lineHeight: 20.0,
-              animationDuration: 2500,
-              percent: guessedNumber / widget.max,
-              center: Text('$guessedNumber/${widget.max}'),
-              linearStrokeCap: LinearStrokeCap.roundAll,
-              progressColor: Colors.green,
+            child: ClipRRect(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              child: Row(
+                children: progressComponents,
+              ),
             ),
           ),
           Expanded(
-            child: AnimatedSwitcher(
-              // duration: const Duration(milliseconds: 500),
-              // transitionBuilder: (Widget child, Animation<double> animation) {
-              //   return ScaleTransition(scale: animation, child: child);
-              // },
-              duration: Duration(seconds: 0),
-              child: Column(
-                key: ValueKey<int>(curStep),
-                children: [
-                  ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minHeight: 150,
-                      maxHeight: 200,
-                    ),
-                    child: Container(
-                      margin: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.all(Radius.circular(20)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black26.withOpacity(0.5),
-                            spreadRadius: 3,
-                            blurRadius: 7,
-                            offset: const Offset(0, 3), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [TeXView(
-                          renderingEngine: renderingEngine,
-                          loadingWidgetBuilder: (ctxt) => const Align(
-                            alignment: Alignment.center,
-                            child: CircularProgressIndicator(),
-                          ),
-                          style: TeXViewStyle(
-                            height: 80,
-                            fontStyle: TeXViewFontStyle(
-                              fontSize: 18,
-                            ),
-                          ),
-                          child: TeXViewDocument(
-                            hiddenFormula.latex,
-                          ),
-                        ),],
-                      ),
-                    ),
+            child: Column(
+              key: ValueKey<int>(curStep),
+              children: [
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+                    minHeight: 150,
+                    maxHeight: 200,
                   ),
-                  Container(
+                  child: Container(
                     margin: const EdgeInsets.all(8),
-                    child: ExpansionTileCard(
-                      leading: Image.asset('assets/icons/light-bulb.png', width: 32, height: 32,),
-                      title: const Text('Подсказки'),
-                      // expandedColor: HexColor.fromHex(MyColors.backgroundColor),
-                      baseColor: Colors.white,
-                      expandedTextColor: Colors.black,
-                      children: <Widget>[
-                        const Divider(
-                          thickness: 1.0,
-                          height: 1.0,
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: ConstrainedBox(
-                            constraints: const BoxConstraints(
-                              maxHeight: 130,
-                            ),
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              child: TeXView(
-                                renderingEngine: renderingEngine,
-                                loadingWidgetBuilder: (ctxt) => const Align(
-                                  alignment: Alignment.center,
-                                  child: CircularProgressIndicator(),
-                                ),
-                                style: TeXViewStyle(
-                                ),
-                                child: TeXViewColumn(children: hints),
-                              ),
-                            ),
-                          ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26.withOpacity(0.5),
+                          spreadRadius: 3,
+                          blurRadius: 7,
+                          offset: const Offset(0, 3), // changes position of shadow
                         ),
                       ],
                     ),
-                  ),
-                  Flexible(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [TeXView(
+                        renderingEngine: renderingEngine,
+                        loadingWidgetBuilder: (ctxt) => const Align(
+                          alignment: Alignment.center,
+                          child: CircularProgressIndicator(),
+                        ),
+                        style: TeXViewStyle(
+                          height: 80,
+                          fontStyle: TeXViewFontStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                        child: TeXViewDocument(
+                          hiddenFormula.latex,
+                        ),
+                      ),],
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(8),
+                  child: ExpansionTileCard(
+                    leading: Image.asset('assets/icons/light-bulb.png', width: 32, height: 32,),
+                    title: const Text('Подсказки'),
+                    // expandedColor: HexColor.fromHex(MyColors.backgroundColor),
+                    baseColor: Colors.white,
+                    expandedTextColor: Colors.black,
+                    children: <Widget>[
+                      const Divider(
+                        thickness: 1.0,
+                        height: 1.0,
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            maxHeight: 130,
+                          ),
                           child: Container(
-                            height: 300,
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            padding: const EdgeInsets.all(8),
+                            child: TeXView(
+                              renderingEngine: renderingEngine,
+                              loadingWidgetBuilder: (ctxt) => const Align(
+                                alignment: Alignment.center,
+                                child: CircularProgressIndicator(),
+                              ),
+                              style: TeXViewStyle(
+                              ),
+                              child: TeXViewColumn(children: hints),
                             ),
-                            margin: EdgeInsets.only(left: 4, right: 4),
-                            child: ClipRRect(
-                              borderRadius: const BorderRadius.all(Radius.circular(10)),
-                              child: TeXView(
-                                renderingEngine: renderingEngine,
-                                loadingWidgetBuilder: (ctxt) => const Align(
-                                  alignment: Alignment.center,
-                                  child: CircularProgressIndicator(),
-                                ),
-                                style: TeXViewStyle(
-                                  backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
-                                ),
-                                child: TeXViewColumn(
-                                  children: variants,
-                                ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Flexible(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Flexible(
+                        child: Container(
+                          height: 300,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          margin: EdgeInsets.only(left: 4, right: 4),
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
+                            child: TeXView(
+                              renderingEngine: renderingEngine,
+                              loadingWidgetBuilder: (ctxt) => const Align(
+                                alignment: Alignment.center,
+                                child: CircularProgressIndicator(),
+                              ),
+                              style: TeXViewStyle(
+                                backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
+                              ),
+                              child: TeXViewColumn(
+                                children: variants,
                               ),
                             ),
                           ),
                         ),
-                        Visibility(
-                          visible: resultText != null,
-                          child: Container(
-                            child: resultText ?? const Text(''),
-                          ),
+                      ),
+                      Visibility(
+                        visible: resultText != null,
+                        child: Container(
+                          child: resultText ?? const Text(''),
                         ),
-                        Visibility(
-                          visible: resultText != null,
-                          child: ElevatedButton(
-                            child: const AutoSizeText('Next'),
-                            onPressed: () {
-                              guessedNumber += lastGuessWin ? 1 : 0;
-                              if (curStep == 10) {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => WinScreen(
-                                        score: guessedNumber,
-                                      )
+                      ),
+                      Visibility(
+                        visible: resultText != null,
+                        child: MyCard(
+                          height: 40,
+                          width: double.infinity,
+                          margin: EdgeInsets.only(left: 8, right: 8, top: 4, bottom: 4),
+                          child: Positioned.fill(
+                            child: Container(
+                              color: HexColor.fromHex(MyColors.secondaryBackgroundColor),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: AutoSizeText(
+                                  'Далее',
+                                  style: TextStyle(
+                                    color: HexColor.fromHex(MyColors.mainColor),
+                                    fontSize: 18,
                                   ),
-                                  (a) => a.isFirst,
-                                );
-                              } else {
-                                doNextStep();
-                              }
-                            },
+                                ),
+                              ),
+                            ),
                           ),
+                          onTap: () {
+                            setState(() {
+                              guessedNumber += lastGuessWin ? 1 : 0;
+                              addProgressComponent(context, 16, lastGuessWin);
+                            });
+                            if (curStep == 10) {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => WinScreen(
+                                      score: guessedNumber,
+                                    )
+                                ),
+                                (a) => a.isFirst,
+                              );
+                            } else {
+                              doNextStep();
+                            }
+                          },
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

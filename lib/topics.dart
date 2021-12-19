@@ -54,9 +54,19 @@ class _TopicsPageState extends State<TopicsPage> {
             itemBuilder: (context, index) {
               String topic = topics[index].item1;
               List<Formula> formulas = topics[index].item2;
+              Map<String, Variable> varrs = {};
+
               List<TeXViewDocument> texDocs = [];
               for (Formula formul in formulas) {
                 texDocs.add(TeXViewDocument(formul.latex));
+                varrs.addAll(formul.variables);
+              }
+
+              List<TeXViewDocument> varTexDocs = [];
+              for (Variable varr in varrs.values) {
+                varTexDocs.add(TeXViewDocument(
+                  r'\( ' + varr.latex + r' \) - ' + varr.description,
+                ));
               }
               return ExpansionTile(
                 title: Container(
@@ -71,7 +81,7 @@ class _TopicsPageState extends State<TopicsPage> {
                     loadingWidgetBuilder: (ctxt) => CircularProgressIndicator(),
                     renderingEngine: renderingEngine,
                     child: TeXViewColumn(
-                      children: texDocs,
+                      children: texDocs + varTexDocs,
                     ),
                   ),
                 ],
