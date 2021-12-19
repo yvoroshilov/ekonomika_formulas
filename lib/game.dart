@@ -1,7 +1,8 @@
-
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:ekonomika/core/random_formula.dart';
 import 'package:ekonomika/main.dart';
+import 'package:ekonomika/win_screen.dart';
+import 'package:expansion_tile_card/expansion_tile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tex/flutter_tex.dart';
@@ -35,9 +36,10 @@ class _GamePage extends State<GamePage> {
   late List<TeXViewDocument> hints;
   late List<Variable> vars;
   late Variable hiddenVar;
-  late List<TeXViewWidget> variants = [];
+  List<TeXViewWidget> variants = [];
+  List<Formula> excludedFormulas = [];
 
-  int curStep = 0;
+  int curStep = 1;
   int guessedNumber = 0;
   bool lastGuessWin = false;
   Widget? resultText;
@@ -53,7 +55,7 @@ class _GamePage extends State<GamePage> {
       allFormulas.addAll(top.item2);
     }
 
-    randomFormula = randForm.getRandomFormula(allFormulas, []);
+    randomFormula = randForm.getRandomFormula(allFormulas, excludedFormulas);
 
     Tuple2<String, Formula> hiddenResult = randForm.hideVar(randomFormula);
     hiddenVar = randomFormula.variables[hiddenResult.item1]!;
@@ -80,7 +82,6 @@ class _GamePage extends State<GamePage> {
   void initState() {
     super.initState();
     resultText = null;
-    guessedNumber += lastGuessWin ? 1 : 0;
     lastGuessWin = false;
     generate(mainData);
     getVariants(5);
@@ -89,8 +90,8 @@ class _GamePage extends State<GamePage> {
   void doNextStep() {
     setState(() {
       resultText = null;
-      guessedNumber += lastGuessWin ? 1 : 0;
       lastGuessWin = false;
+      excludedFormulas.add(randomFormula);
       generate(mainData);
       getVariants(5);
       curStep++;
@@ -111,7 +112,6 @@ class _GamePage extends State<GamePage> {
             // backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
             backgroundColor: Colors.white,
             borderRadius: TeXViewBorderRadius.all(20),
-            elevation: 5,
             border: TeXViewBorder.all(TeXViewBorderDecoration(
               borderWidth: 1,
               borderColor: Colors.black,
@@ -195,15 +195,13 @@ class _GamePage extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: HexColor.fromHex(MyColors.secondaryBackgroundColor),
-        title: Align(
-          alignment: Alignment.center,
-          child: AutoSizeText(
-            'STEP $curStep',
-            maxLines: 1,
-            style: const TextStyle(
-              fontSize: 18,
-            ),
+        title: AutoSizeText(
+          'Раунд $curStep',
+          maxLines: 1,
+          style: const TextStyle(
+            fontSize: 18,
           ),
         ),
         toolbarHeight: 45,
@@ -240,7 +238,7 @@ class _GamePage extends State<GamePage> {
                   ConstrainedBox(
                     constraints: const BoxConstraints(
                       minHeight: 150,
-                      maxHeight: 250,
+                      maxHeight: 200,
                     ),
                     child: Container(
                       margin: const EdgeInsets.all(8),
@@ -270,81 +268,109 @@ class _GamePage extends State<GamePage> {
                               fontSize: 18,
                             ),
                           ),
-                          child: TeXViewDocument(hiddenFormula.latex),
+                          child: TeXViewDocument(
+                            hiddenFormula.latex,
+                          ),
                         ),],
                       ),
                     ),
                   ),
-                  ExpansionTile(
-                    title: Container(
-                      width: double.infinity,
-                      child: Text(
-                        'Hints',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                    ),
-                    children: [
-                      ConstrainedBox(
-                        constraints: BoxConstraints(
-                          maxHeight: 130,
+                  Container(
+                    margin: const EdgeInsets.all(8),
+                    child: ExpansionTileCard(
+                      leading: Image.asset('assets/icons/light-bulb.png', width: 32, height: 32,),
+                      title: const Text('Подсказки'),
+                      // expandedColor: HexColor.fromHex(MyColors.backgroundColor),
+                      baseColor: Colors.white,
+                      expandedTextColor: Colors.black,
+                      children: <Widget>[
+                        const Divider(
+                          thickness: 1.0,
+                          height: 1.0,
                         ),
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: TeXView(
-                            renderingEngine: renderingEngine,
-                            loadingWidgetBuilder: (ctxt) => const Align(
-                              alignment: Alignment.center,
-                              child: CircularProgressIndicator(),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              maxHeight: 130,
                             ),
-                            style: TeXViewStyle(
-                              backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              child: TeXView(
+                                renderingEngine: renderingEngine,
+                                loadingWidgetBuilder: (ctxt) => const Align(
+                                  alignment: Alignment.center,
+                                  child: CircularProgressIndicator(),
+                                ),
+                                style: TeXViewStyle(
+                                ),
+                                child: TeXViewColumn(children: hints),
+                              ),
                             ),
-                            child: TeXViewColumn(children: hints),
                           ),
                         ),
-                      ),
-                    ],
-                    trailing: Icon(Icons.arrow_drop_down_circle_outlined),
+                      ],
+                    ),
                   ),
-                  Spacer(flex: 10,),
                   Flexible(
-                    flex: 99,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      margin: EdgeInsets.only(left: 4, right: 4),
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
-                        child: TeXView(
-                          renderingEngine: renderingEngine,
-                          loadingWidgetBuilder: (ctxt) => const Align(
-                            alignment: Alignment.center,
-                            child: CircularProgressIndicator(),
-                          ),
-                          style: TeXViewStyle(
-                            backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
-                          ),
-                          child: TeXViewColumn(
-                            children: variants,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                          child: Container(
+                            height: 300,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(10)),
+                            ),
+                            margin: EdgeInsets.only(left: 4, right: 4),
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.all(Radius.circular(10)),
+                              child: TeXView(
+                                renderingEngine: renderingEngine,
+                                loadingWidgetBuilder: (ctxt) => const Align(
+                                  alignment: Alignment.center,
+                                  child: CircularProgressIndicator(),
+                                ),
+                                style: TeXViewStyle(
+                                  backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
+                                ),
+                                child: TeXViewColumn(
+                                  children: variants,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  Visibility(
-                    visible: resultText != null,
-                    child: Container(
-                      child: resultText ?? const Text(''),
-                    ),
-                  ),
-                  Visibility(
-                    visible: resultText != null,
-                    child: ElevatedButton(
-                      child: const AutoSizeText('Next'),
-                      onPressed: () {
-                        doNextStep();
-                      },
+                        Visibility(
+                          visible: resultText != null,
+                          child: Container(
+                            child: resultText ?? const Text(''),
+                          ),
+                        ),
+                        Visibility(
+                          visible: resultText != null,
+                          child: ElevatedButton(
+                            child: const AutoSizeText('Next'),
+                            onPressed: () {
+                              guessedNumber += lastGuessWin ? 1 : 0;
+                              if (curStep == 10) {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => WinScreen(
+                                        score: guessedNumber,
+                                      )
+                                  ),
+                                  (a) => a.isFirst,
+                                );
+                              } else {
+                                doNextStep();
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

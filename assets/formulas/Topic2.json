@@ -1,0 +1,169 @@
+{
+  "topic": "Topic2",
+  "variables": {
+    "OSsr": {
+      "latex": "ОС_{ср}",
+      "description": "Среднегодовая стоимость основных средств"
+    },
+    "OSperv": {
+      "latex": "ОС_{перв}",
+      "description": "Первоначальная стоимость основных средств"
+    },
+    "OSost": {
+      "latex": "ОС_{ост}",
+      "description": "Остаточная стоимость основных средств"
+    },
+    "OSng": {
+      "latex": "ОС_{нг}",
+      "description": "Стоимость основных средств на начало года"
+    },
+    "OSvved": {
+      "latex": "ОС_{введ}",
+      "description": "Стоимость введения основных средств"
+    },
+    "OSvyb": {
+      "latex": "ОС_{выб}",
+      "description": "Стоимость выбывших основных средств"
+    },
+    "n": {
+      "latex": "n",
+      "description": "Количество месяцев с момента введения до конца года"
+    },
+    "m": {
+      "latex": "m",
+      "description": "Количество месяцев с момента выбывания до конца года"
+    },
+    "OSkg": {
+      "latex": "ОС_{кг}",
+      "description": "Стоимость основных средств на конец года"
+    },
+    "Kobn": {
+      "latex": "К_{обн (ввода)}",
+      "description": "Коэффициент обновления"
+    },
+    "Kvyb": {
+      "latex": "К_{выб}",
+      "description": "Коэффициент выбывания"
+    },
+    "Kpr": {
+      "latex": "К_{пр}",
+      "description": "Коэффициент прироста"
+    },
+    "FO": {
+      "latex": "ФО",
+      "description": "Фондоотдача"
+    },
+    "VP": {
+      "latex": "ВП",
+      "description": "Объем выпущенной продукции в стоймостном выражении"
+    },
+    "FE": {
+      "latex": "ФЕ",
+      "description": "Фондоёмкость"
+    },
+    "FV": {
+      "latex": "ФВ",
+      "description": "Фондовооруженность"
+    },
+    "SSCH": {
+      "latex": "ССЧ",
+      "description": "Среднесписочная численность"
+    },
+    "FR": {
+      "latex": "ФР",
+      "description": "Фондорентабельность"
+    },
+    "Preal": {
+      "latex": "П_{реал}",
+      "description": "Прибыль от реализации"
+    },
+    "CHP": {
+      "latex": "ЧП",
+      "description": "Чистая прибыль"
+    },
+    "Ki": {
+      "latex": "К_{и}",
+      "description": "Коэффициент износа"
+    },
+    "Kg": {
+      "latex": "К_{г}",
+      "description": "Коэффициент годности"
+    },
+    "I": {
+      "latex": "И",
+      "description": "Издержки"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ OSsr }}={{ OSng }} + {{ OSvved }} \\times\\frac{ {{ n }} }{12} - {{ OSvyb }} \\times\\frac{ {{ m }} }{12} $$",
+      "description": "",
+      "varIds": ["OSsr", "OSng", "OSvved", "n", "m", "OSvyb"]
+    },
+    {
+      "latex": "$$ {{ OSkg }}={{ OSng }} + {{ OSvved }} - {{ OSvyb }} $$",
+      "description": "",
+      "varIds": ["OSkg", "OSng", "OSvved", "OSvyb"]
+    },
+    {
+      "latex": "$$ {{ Kobn }}=\\frac{ {{ OSvved }} } { {{ OSkg }} } $$",
+      "description": "",
+      "varIds": ["Kobn", "OSvved", "OSkg"]
+    },
+    {
+      "latex": "$$ {{ Kvyb }}=\\frac{ {{ OSvyb }} } { {{ OSng }} } $$",
+      "description": "",
+      "varIds": ["Kvyb", "OSvyb", "OSng"]
+    },
+    {
+      "latex": "$$ {{ Kpr }}=\\frac{|{{ OSvved }} - {{ OSvyb }}|}{ {{ OSng }} } $$",
+      "description": "Коэффициент прироста",
+      "varIds": ["OSvved", "OSvyb", "OSng", "Kpr"]
+    },
+    {
+      "latex": "$$ {{ FO }}=\\frac{ {{ VP }} } { {{ OSsr }} } $$",
+      "description": "Коэффициент прироста",
+      "varIds": ["FO", "VP", "OSsr"]
+    },
+    {
+      "latex": "$$ {{ FE }}=\\frac{ 1 } { {{ FO }} }=\\frac{ {{ OSsr }} } { {{ VP }} } $$",
+      "description": "Коэффициент прироста",
+      "varIds": ["FE", "FO", "OSsr", "VP"]
+    },
+    {
+      "latex": "$$ {{ FV }}=\\frac{ {{ OSsr }} } { {{ SSCH }} } $$",
+      "description": "Коэффициент прироста",
+      "varIds": ["FV", "OSsr", "SSCH"]
+    },
+    {
+      "latex": "$$ {{ FR }}=\\frac{ {{ Preal }} \\times {{ CHP }} } { {{ OSsr }} } \\times 100\\% $$",
+      "description": "Коэффициент прироста",
+      "varIds": ["FR", "Preal", "OSsr", "CHP"]
+    },
+    {
+      "latex": "$$ {{ Ki }}=\\frac{ {{ OSperv }} - {{ OSost }} } { {{ OSperv }} }  $$",
+      "description": "",
+      "varIds": ["Ki", "OSperv", "OSost"]
+    },
+    {
+      "latex": "$$ {{ OSost }}={{ OSperv }} - {{ I }} $$",
+      "description": "",
+      "varIds": ["I", "OSperv", "OSost"]
+    },
+    {
+      "latex": "$$ {{ Ki }}=\\frac{ {{ OSperv }} - {{ I }} } { {{ OSperv }} }=\\frac{ {{ I }} } { {{ OSperv }} }  $$",
+      "description": "",
+      "varIds": ["Ki", "OSperv", "I"]
+    },
+    {
+      "latex": "$$ {{ Kg }}=\\frac{ {{ OSost }} } { {{ OSperv }} }=\\frac{ {{ OSperv }} - {{ I }} } { {{ OSperv }} }  $$",
+      "description": "",
+      "varIds": ["Kg","OSost", "OSperv", "I"]
+    },
+    {
+      "latex": "$$ {{ Kg }}= 1 - {{ Ki }} $$",
+      "description": "",
+      "varIds": ["Kg","Ki"]
+    }
+  ]
+}

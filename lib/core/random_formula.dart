@@ -8,21 +8,23 @@ class RandomFormula {
 
     Formula getRandomFormula(List<Formula> formulas, List<Formula> except) {
         int ind = 0;
-        do {
-            ind = Random(DateTime.now().microsecond).nextInt(formulas.length);
-        } while (except.contains(formulas[ind]));
-        return formulas[ind];
+        List<Formula> formulasCopy = List.of(formulas);
+        formulasCopy.removeWhere((formula) => except.contains(formula));
+        ind = Random(DateTime.now().microsecond).nextInt(formulasCopy.length);
+        return formulasCopy[ind];
     }
 
     List<Variable> getRandomVariables(int number, List<Variable> vars, List<Variable> except) {
         Random rand = Random(DateTime.now().microsecond);
+        List<Variable> varsCopy = List.of(vars);
+        varsCopy.removeWhere((varr) => except.contains(varr));
+
         List<Variable> result = [];
         for (int i = 0; i < number; i++) {
             int ind = 0;
-            do {
-                ind = rand.nextInt(vars.length);
-            } while (except.contains(vars[ind]) || result.contains(vars[ind]));
-            result.add(vars[ind]);
+            ind = rand.nextInt(varsCopy.length);
+            result.add(varsCopy[ind]);
+            varsCopy.removeAt(ind);
         }
         return result;
     }

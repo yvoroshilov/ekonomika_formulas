@@ -1,0 +1,79 @@
+{
+  "topic": "Topic3",
+  "variables": {
+    "Kekst": {
+      "latex": "К_{экст}",
+      "description": "Коэффициент экстенсивной загрузки оборудывания"
+    },
+    "Kint": {
+      "latex": "К_{инт}",
+      "description": "Коэффициент интенсивной загрузки оборудывания"
+    },
+    "Kintegr": {
+      "latex": "К_{интегр}",
+      "description": "Коэффициент интегральной загрузки оборудывания"
+    },
+    "Ksm": {
+      "latex": "К_{см}",
+      "description": "Коэффициент сменности"
+    },
+    "VPf": {
+      "latex": "ВП_{ф}",
+      "description": "Объем выпуска продукции (фактический)"
+    },
+    "VPn": {
+      "latex": "ВП_{н}",
+      "description": "Объем выпуска продукции (нормативный)"
+    },
+    "Tf": {
+      "latex": "Т_{ф}",
+      "description": "Фонд времени работы оборудывания (фактический)"
+    },
+    "Tn": {
+      "latex": "Т_{н}",
+      "description": "Фонд времени работы оборудывания (нормативный)"
+    },
+    "PMf": {
+      "latex": "ПМ_{ф}",
+      "description": "Производственная мощность (фактическая)"
+    },
+    "PMn": {
+      "latex": "ПМ_{н}",
+      "description": "Производственная мощность (нормативная)"
+    },
+    "PM": {
+      "latex": "ПМ",
+      "description": "Производственная мощность"
+    },
+    "N": {
+      "latex": "N",
+      "description": "Количество оборудывания в сменах в целом"
+    },
+    "n": {
+      "latex": "n",
+      "description": "за одну"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ Kekst }}=\\frac{ {{ Tf }} }{ {{ Tn }} } $$",
+      "description": "",
+      "varIds": ["Kekst", "Tf", "Tn"]
+    },
+    {
+      "latex": "$$ {{ Kint }}=\\frac{ {{ VPf }} }{ {{ VPn }} }=\\frac{ {{ PMf }} }{ {{ PMn }} }=\\frac{ {{ VPf }} }{ {{ PM }} } $$",
+      "description": "",
+      "varIds": ["Kint", "VPf", "VPn", "PMf", "PMn", "PM"]
+    },
+    {
+      "latex": "$$ {{ Kintegr }}={{ Kekst }} \\times {{ Kint }} $$",
+      "description": "",
+      "varIds": ["Kintegr", "Kekst", "Kint"]
+    },
+    {
+      "latex": "$$ {{ Ksm }}=\\frac{ {{ n }}_{1} + {{ n }}_{2} + ... +{{ n }}_{n} } { {{ N }}  } $$",
+      "description": "",
+      "varIds": ["Ksm", "n", "N"]
+    }
+  ]
+}

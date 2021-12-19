@@ -31,15 +31,13 @@ class _TopicsPageState extends State<TopicsPage> {
     List<Tuple2<String, List<Formula>>> topics = mainData.item1;
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         backgroundColor: HexColor.fromHex(MyColors.secondaryBackgroundColor),
-        title: const Align(
-          alignment: Alignment.center,
-          child: AutoSizeText(
-            'Topics',
-            maxLines: 1,
-            style: TextStyle(
-              fontSize: 18,
-            ),
+        title: const AutoSizeText(
+          'Topics',
+          maxLines: 1,
+          style: TextStyle(
+            fontSize: 18,
           ),
         ),
         toolbarHeight: 45,

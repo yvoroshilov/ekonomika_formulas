@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyColors {
   static const String backgroundColor = '6E6E6E';
   static const String secondaryBackgroundColor = '000000';
-  static const String mainColor = '41E762';
+  static const String mainColor = 'FFFFFF';
 }
 
 extension HexColor on Color {

@@ -39,7 +39,7 @@ class _MainMenuState extends State<MainMenu> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        'Random',
+                        'Начать',
                         style: TextStyle(
                           color: HexColor.fromHex(MyColors.mainColor),
                           fontSize: 26,
@@ -72,7 +72,7 @@ class _MainMenuState extends State<MainMenu> {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        'By topics',
+                        'Все формулы',
                         style: TextStyle(
                           color: HexColor.fromHex(MyColors.mainColor),
                           fontSize: 26,
