@@ -234,10 +234,16 @@ class _GamePage extends State<GamePage> {
           Container(
             height: 35,
             padding: const EdgeInsets.all(8),
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Row(
-                children: progressComponents,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                border: Border.all(color: Colors.black),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: Row(
+                  children: progressComponents,
+                ),
               ),
             ),
           ),
