@@ -15,10 +15,14 @@ class RandomFormula {
     }
 
     List<Variable> getRandomVariables(int number, List<Variable> vars, List<Variable> except) {
-        Random rand = Random(DateTime.now().microsecond);
-        List<Variable> varsCopy = List.of(vars);
+        Map<String, Variable> mapp = {};
+        for (Variable varr in vars) {
+            mapp[varr.latex] = varr;
+        }
+        List<Variable> varsCopy = List.of(mapp.values);
         varsCopy.removeWhere((varr) => except.contains(varr));
 
+        Random rand = Random(DateTime.now().microsecond);
         List<Variable> result = [];
         for (int i = 0; i < number; i++) {
             int ind = 0;
