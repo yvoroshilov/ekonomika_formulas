@@ -1,0 +1,237 @@
+{
+  "topic": "Прибыль и рентабельность",
+  "variables": {
+    "Vrp": {
+      "latex": "В_{рп}",
+      "description": "выручка от реализации продукции (работ, услуг) без учета косвенных налогов от продажи, руб"
+    },
+    "Srp": {
+      "latex": "С_{рп}",
+      "description": "себестоимость реализованной продукции (работ, услуг) без сумм управленческих расходов и расходов на реализацию, руб"
+    },
+    "Prp": {
+      "latex": "П_{рп}",
+      "description": "Прибыль (убыток) от реализации продукции"
+    },
+    "Pval": {
+      "latex": "П_{вал}",
+      "description": "Валовая прибыль (убыток)"
+    },
+    "Rupr": {
+      "latex": "Р_{упр}",
+      "description": "управленческие расходы"
+    },
+    "Rreal": {
+      "latex": "Р_{реал}",
+      "description": "расходы на реализацию, руб"
+    },
+    "Ptekd": {
+      "latex": "П_{тек.д.}",
+      "description": "Прибыль (убыток) от текущей деятельности"
+    },
+    "Dtekd": {
+      "latex": "Д_{тек.д.}",
+      "description": "прочие доходы от текущей деятельности"
+    },
+    "Rtekd": {
+      "latex": "Р_{тек.д.}",
+      "description": "прочие расходы от текущей деятельности"
+    },
+    "Pinvfinind": {
+      "latex": "П_{инв.фин.ин.д.}",
+      "description": "Прибыль (убыток) от инвестиционной, финансовой и иной деятельности"
+    },
+    "Pinvd": {
+      "latex": "П_{инв.д.}",
+      "description": "Прибыль (убыток) от инвестиционной деятельности"
+    },
+    "Pfind": {
+      "latex": "П_{фин.д.}",
+      "description": "Прибыль (убыток) от финансовой деятельности"
+    },
+    "Pind": {
+      "latex": "П_{ин.д.}",
+      "description": "Прибыль (убыток) от иной деятельности"
+    },
+    "Dinvd": {
+      "latex": "Д_{инв.д.}",
+      "description": "доходы от инвестиционной деятельности, руб"
+    },
+    "Rinvd": {
+      "latex": "Р_{инв.д.}",
+      "description": "расходы от инвестиционной деятельности, руб"
+    },
+    "Dfind": {
+      "latex": "Д_{фин.д.}",
+      "description": "доходы от финансовой деятельности, руб"
+    },
+    "Rfind": {
+      "latex": "Р_{фин.д.}",
+      "description": "расходы от финансовой деятельности, руб"
+    },
+    "Dind": {
+      "latex": "Д_{ин.д.}",
+      "description": "доходы от иной деятельности, руб"
+    },
+    "Rind": {
+      "latex": "Р_{ин.д.}",
+      "description": "расходы от иной деятельности, руб"
+    },
+    "Pn": {
+      "latex": "П_{н}",
+      "description": "Прибыль (убыток) до налогообложения"
+    },
+    "CHP": {
+      "latex": "ЧП",
+      "description": "Чистая прибыль"
+    },
+    "NP": {
+      "latex": "НП",
+      "description": "налог на прибыль юр лиц, руб"
+    },
+    "PNS": {
+      "latex": "ПНС",
+      "description": "прочие налоги и сборы, исчисляемые из прибыли (дохода), руб"
+    },
+    "Prasp": {
+      "latex": "П_{расп}",
+      "description": "Прибыль, остающаяся в распоряжении предприятия и предназначенная к распределению"
+    },
+    "Spoln": {
+      "latex": "С_{полн}",
+      "description": "Полная себестоимость"
+    },
+    "Rprocii": {
+      "latex": "R_{про-ции}",
+      "description": "Рентабельность продукции"
+    },
+    "Rprova": {
+      "latex": "R_{про-ва}",
+      "description": "Рентабельность продаж"
+    },
+    "Rprodaj": {
+      "latex": "R_{продаж}",
+      "description": "Рентабельность производства"
+    },
+    "OPFsr": {
+      "latex": "ОПФ_{ср}",
+      "description": "среднегодовая стоимость основных производственных фондов, руб"
+    },
+    "NOSsr": {
+      "latex": "НОС_{ср}",
+      "description": "среднегодовая стоимость (остатка) нормируемых оборотных средств, руб"
+    },
+    "Rsk": {
+      "latex": "R_{ск}",
+      "description": "среднегодовая стоимость (остатка) нормируемых оборотных средств, руб"
+    },
+    "SKsr": {
+      "latex": "СК_{ср}",
+      "description": "среднегодовая (средняя) величина собственного капитала, руб."
+    },
+    "Ra": {
+      "latex": "R_{а}",
+      "description": "Рентабельность активов"
+    },
+    "Asr": {
+      "latex": "А_{ср}",
+      "description": "среднегодовая (средняя) величина активов, руб."
+    },
+    "FO": {
+      "latex": "ФО",
+      "description": "ФО – финансовые обязательства предприятия по заемному капиталу, оплаты пени, штрафов и иных санкций, перечисляемых в бюджет, и платежей за сверхнормативное загрязнение окружающей среды"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ Pval }}={{ Vrp }} - {{ Srp }} $$",
+      "description": "",
+      "varIds": ["Pval", "Vrp", "Srp"]
+    },
+    {
+      "latex": "$$ {{ Prp }}={{ Pval }} - {{ Rupr }} - {{ Rreal }} $$",
+      "description": "",
+      "varIds": ["Prp", "Pval", "Rupr","Rreal"]
+    },
+    {
+      "latex": "$$ {{ Ptekd }}={{ Prp }} + ({{ Dtekd }} - {{ Rtekd }}) $$",
+      "description": "",
+      "varIds": ["Ptekd", "Prp", "Dtekd","Rtekd"]
+    },
+    {
+      "latex": "$$ {{ Pinvfinind }}=({{ Dinvd }} - {{ Rinvd }}) + ({{ Dfind }} - {{ Rfind }}) + ({{ Dind }} - {{ Rind }}) $$",
+      "description": "",
+      "varIds": ["Pinvfinind", "Dinvd", "Rinvd","Dfind", "Rfind", "Dind", "Rind"]
+    },
+    {
+      "latex": "$$ {{ Pinvfinind }}={{ Pinvd }} + ({{ Pfind }} + {{ Pind }} $$",
+      "description": "",
+      "varIds": ["Pinvfinind", "Pinvd", "Pfind","Pind"]
+    },
+    {
+      "latex": "$$ {{ Pinvd }}={{ Dinvd }} - {{ Rinvd }} $$",
+      "description": "",
+      "varIds": ["Pinvd", "Dinvd", "Rinvd"]
+    },
+    {
+      "latex": "$$ {{ Pfind }}={{ Dfind }} - {{ Rfind }} $$",
+      "description": "",
+      "varIds": ["Pfind","Dfind", "Rfind"]
+    },
+    {
+      "latex": "$$ {{ Pind }}={{ Dind }} - {{ Rind }} $$",
+      "description": "",
+      "varIds": ["Pind", "Dind", "Rind"]
+    },
+    {
+      "latex": "$$ {{ CHP }}={{ Pn }} - {{ NP }} - {{ PNS }} $$",
+      "description": "",
+      "varIds": ["CHP", "Pn", "NP", "PNS"]
+    },
+    {
+      "latex": "$$ {{ Prasp }}={{ CHP }} - {{ FO }} $$",
+      "description": "",
+      "varIds": ["Prasp", "CHP", "FO"]
+    },
+    {
+      "latex": "$$ {{ Prp }}={{ Vrp }} - {{ Srp }} - {{ Rupr }} - {{ Rreal }} $$",
+      "description": "",
+      "varIds": ["Prp", "Vrp", "Srp", "Rupr", "Rreal"]
+    },
+    {
+      "latex": "$$ {{ Spoln }}={{ Srp }} + {{ Rupr }} + {{ Rreal }} $$",
+      "description": "",
+      "varIds": ["Spoln", "Srp", "Rupr", "Rreal"]
+    },
+    {
+      "latex": "$$ {{ Prp }}={{ Vrp }} - {{ Spoln }} $$",
+      "description": "",
+      "varIds": ["Spoln", "Vrp", "Prp"]
+    },
+    {
+      "latex": "$$ {{ Rprocii }}=\\frac{ {{ Prp }} }{ {{ Spoln }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Rprocii", "Prp", "Spoln"]
+    },
+    {
+      "latex": "$$ {{ Rprodaj }}=\\frac{ {{ Prp }} ({{ CHP }}) }{ {{ Vrp }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Rprodaj", "Prp", "CHP", "Vrp"]
+    },
+    {
+      "latex": "$$ {{ Rprova }}=\\frac{ {{ Pn }} ({{ CHP }}) }{ {{ OPFsr }} + {{ NOSsr }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Rprova", "Pn", "CHP", "OPFsr","NOSsr"]
+    },
+    {
+      "latex": "$$ {{ Rsk }}=\\frac{ {{ CHP }} }{ {{ SKsr }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Rsk", "SKsr", "CHP"]
+    },
+    {
+      "latex": "$$ {{ Ra }}=\\frac{ {{ Pn }} ({{ CHP }}) }{ {{ Asr }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Ra", "Pn", "CHP", "Asr"]
+    }
+  ]
+}

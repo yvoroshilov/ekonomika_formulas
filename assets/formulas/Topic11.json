@@ -1,0 +1,285 @@
+{
+  "topic": "Себестоимость",
+  "variables": {
+    "S": {
+      "latex": "С",
+      "description": "Себестоимость"
+    },
+    "V": {
+      "latex": "В",
+      "description": "Выручка"
+    },
+    "C": {
+      "latex": "Ц",
+      "description": "Цена"
+    },
+    "Tb": {
+      "latex": "Т_{б}",
+      "description": "Точка безубыточности. Объем безубыточного производства в натуральном выражении"
+    },
+    "Vtor": {
+      "latex": "В_{тор}",
+      "description": "Торговая выручка"
+    },
+    "Ub": {
+      "latex": "У_{б}",
+      "description": "Уровень безубыточности"
+    },
+    "Ukr": {
+      "latex": "У_{кр}",
+      "description": "Критическая цена"
+    },
+    "Zpost": {
+      "latex": "З_{пост}",
+      "description": "Условно-постоянные"
+    },
+    "Zper": {
+      "latex": "З_{пер}",
+      "description": "Условно-переменные"
+    },
+    "Zpostob": {
+      "latex": "З_{пост}^{общ}",
+      "description": "Затраты условно-постоянные на весь объем"
+    },
+    "Zperob": {
+      "latex": "З_{пер}^{общ}",
+      "description": "Затраты условно-переменные на весь объем"
+    },
+    "Zposted": {
+      "latex": "З_{пост}^{ед}",
+      "description": "Затраты условно-постоянные на единецу"
+    },
+    "Zpered": {
+      "latex": "З_{пер}^{ед}",
+      "description": "Затраты условно-переменные на единицу"
+    },
+    "Tr": {
+      "latex": "Т_{р}",
+      "description": "Темпы роста"
+    },
+    "Tpr": {
+      "latex": "Т_{пр}",
+      "description": "Темпы прироста"
+    },
+    "Otchper": {
+      "latex": "Отчетный\\ период",
+      "description": "Отчетный период"
+    },
+    "Plper": {
+      "latex": "Плановый\\ период",
+      "description": "Плановый период"
+    },
+    "Z1rub": {
+      "latex": "З_{1руб}",
+      "description": "Затраты на один рубль"
+    },
+    "Z1ed": {
+      "latex": "З_{1ед}",
+      "description": "Затраты на одну единицу"
+    },
+    "Ss": {
+      "latex": "С_{(в\\ стоимостном\\ выражении)}",
+      "description": "Себестоимость"
+    },
+    "VP": {
+      "latex": "ВП",
+      "description": "Выпуск продукции"
+    },
+    "VP1": {
+      "latex": "ВП_{(в\\ стоимостном\\ выражении)}",
+      "description": "Выпуск продукции"
+    },
+    "VP2": {
+      "latex": "ВП_{(в\\ номинальном\\ выражении)}",
+      "description": "Выпуск продукции"
+    },
+    "VPpl": {
+      "latex": "ВП_{пл}",
+      "description": "Выпуск продукции (плановый)"
+    },
+    "DeltaS": {
+      "latex": "\\Delta С",
+      "description": "Размер годовой экономии"
+    },
+    "Cedbaz": {
+      "latex": "С_{баз}^{ед}",
+      "description": "Размер годовой экономии (базовый)"
+    },
+    "Cedpl": {
+      "latex": "С_{пл}^{ед}",
+      "description": "Размер годовой экономии (плановая)"
+    },
+    "Cob": {
+      "latex": "С^{общ}",
+      "description": "Себестоимость общая"
+    },
+    "Ced": {
+      "latex": "С^{ед}",
+      "description": "Себестоимость еденицы"
+    },
+    "Zsov": {
+      "latex": "З_{сов}",
+      "description": "Совокупные затраты = себестоимость"
+    },
+    "Tbbaz": {
+      "latex": "Т_{б\\ баз}",
+      "description": "Точка безубыточности (базовая)"
+    },
+    "Tbpl": {
+      "latex": "Т_{б\\ пл}",
+      "description": "Точка безубыточности (плановая)"
+    },
+    "P": {
+      "latex": "П",
+      "description": "Прибыль"
+    },
+    "ZFP": {
+      "latex": "ЗФП",
+      "description": "Запас финансовой прочности"
+    },
+    "Rprocii": {
+      "latex": "R_{про-ции}",
+      "description": "Рентабельность продукции"
+    },
+    "Vpl": {
+      "latex": "В_{пл}",
+      "description": "Выручка (плановая)"
+    },
+    "Vper": {
+      "latex": "В_{пер}",
+      "description": "Выручка (переменная)"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ S }}={{ Zpost }} + {{ Zper }} $$",
+      "description": "",
+      "varIds": ["S", "Zpost", "Zper"]
+    },
+    {
+      "latex": "$$ {{ Tr }}=\\frac{ {{ Plper }} }{ {{ Otchper }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Tr", "Plper", "Otchper"]
+    },
+    {
+      "latex": "$$ {{ Tpr }}={{ Tr }} - 100\\% $$",
+      "description": "",
+      "varIds": ["Tr", "Tpr"]
+    },
+    {
+      "latex": "$$ {{ Z1rub }}=\\frac{ {{ Ss }} }{ {{ VP1 }} } [\\frac{ руб. }{ руб. }] $$",
+      "description": "",
+      "varIds": ["Z1rub", "Ss", "VP1"]
+    },
+    {
+      "latex": "$$ {{ Z1ed }}=\\frac{ {{ Ss }} }{ {{ VP2 }} }  [\\frac{ руб. }{ шт. }]$$",
+      "description": "",
+      "varIds": ["Z1ed", "Ss", "VP2"]
+    },
+    {
+      "latex": "$$ {{ DeltaS }}=({{ Cedbaz }} - {{ Cedpl }}) \\times {{ VPpl }} $$",
+      "description": "",
+      "varIds": ["DeltaS", "Cedbaz", "Cedpl", "VPpl"]
+    },
+    {
+      "latex": "$$ {{ Zpostob }}={{ Zposted }} \\times {{ VP }} $$",
+      "description": "",
+      "varIds": ["Zpostob", "Zposted","VP"]
+    },
+    {
+      "latex": "$$ {{ Zperob }}={{ Zpered }} \\times {{ VP }} $$",
+      "description": "",
+      "varIds": ["Zperob", "Zpered","VP"]
+    },
+    {
+      "latex": "$$ {{ Cob }}={{ Zsov }}= {{ Zpostob }} + {{ Zperob }} $$",
+      "description": "",
+      "varIds": ["Cob", "Zsov","Zpostob","Zperob"]
+    },
+    {
+      "latex": "$$ {{ Ced }}=\\frac{ {{ Cob }} }{ {{ VP }} } $$",
+      "description": "",
+      "varIds": ["Ced","Cob","VP"]
+    },
+    {
+      "latex": "$$ {{ Tb }}=\\frac{ {{ Zpostob }} }{ {{ C }} - {{ Zpered }} } $$",
+      "description": "",
+      "varIds": ["Tb","Zpostob","C","Zpered"]
+    },
+    {
+      "latex": "$$ {{ Vtor }}={{ Tb }} \\times {{ C }} $$",
+      "description": "",
+      "varIds": ["Tb","Vtor","C"]
+    },
+    {
+      "latex": "$$ {{ Ub }}=\\frac{ {{ Tb }} }{ {{ VP }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Ub","Tb","VP"]
+    },
+    {
+      "latex": "$$ {{ Ukr }}=\\frac{ {{ Zpostob }} }{ {{ Tb }} } + {{ Zpered }} $$",
+      "description": "",
+      "varIds": ["Zpostob","Tb","Zpered", "Ukr"]
+    },
+    {
+      "latex": "$$ {{ Ced }}={{ Zposted }} + {{ Zpered }} $$",
+      "description": "",
+      "varIds": ["Ced","Zpered", "Zposted"]
+    },
+    {
+      "latex": "$$ \\Delta {{ Tb }}={{ Tbpl }} - {{ Tbbaz }} $$",
+      "description": "",
+      "varIds": ["Tb","Tbpl", "Tbbaz"]
+    },
+    {
+      "latex": "$$ {{ Cob }}= {{ Zsov }}= {{ Zpostob }} + {{ Zpered }} \\times {{ VP }} $$",
+      "description": "",
+      "varIds": ["Cob","Zsov", "Zpostob", "Zpered", "VP"]
+    },
+    {
+      "latex": "$$ {{ V }}={{ P }} + {{ S }} $$",
+      "description": "",
+      "varIds": ["V","P", "S"]
+    },
+    {
+      "latex": "$$ {{ P }}={{ V }} - {{ S }} $$",
+      "description": "",
+      "varIds": ["V","P", "S"]
+    },
+    {
+      "latex": "$$ {{ V }}={{ VP }} \\times {{ C }} $$",
+      "description": "",
+      "varIds": ["V","VP", "C"]
+    },
+    {
+      "latex": "$$ {{ C }}=\\frac{ {{ V }} }{ {{ VP }} }=\\frac{ {{ P }} + {{ S }} }{ {{ VP }} }=\\frac{ {{ P }} + {{ Zsov }} }{ {{ VP }} }=\\frac{ {{ P }} + ({{ Zpostob }} + {{ Zpered }} \\times {{ VP }}) }{ {{ VP }} }$$",
+      "description": "",
+      "varIds": ["V","Zpered", "VP", "Zpostob","P", "Zsov", "C", "S"]
+    },
+    {
+      "latex": "$$ {{ Rprocii }}=\\frac{ {{ P }} }{ {{ S }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Rprocii","P", "S"]
+    },
+    {
+      "latex": "$$ {{ Rprocii }}=\\frac{ {{ V }} - {{ S }} }{ {{ S }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Rprocii","V", "S"]
+    },
+    {
+      "latex": "$$ \\frac{ {{ Rprocii }} }{ 100\\% } \\times 100\\%={{ V }} - {{ S }} $$",
+      "description": "",
+      "varIds": ["Rprocii","V", "S"]
+    },
+    {
+      "latex": "$$ {{ V }}={{ S }} \\times (\\frac{ 1 + {{ Rprocii }} }{ 100\\% }) $$",
+      "description": "",
+      "varIds": ["Rprocii","V", "S"]
+    },
+    {
+      "latex": "$$ {{ ZFP }}={{ Vpl }} - {{ Vper }} $$",
+      "description": "",
+      "varIds": ["ZFP","Vpl", "Vper"]
+    }
+  ]
+}

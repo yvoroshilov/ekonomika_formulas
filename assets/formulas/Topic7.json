@@ -1,0 +1,55 @@
+{
+  "topic": "Topic7",
+  "variables": {
+    "MO": {
+      "latex": "МО",
+      "description": "Материалоотдача"
+    },
+    "ME": {
+      "latex": "ME",
+      "description": "Материалоёмкость"
+    },
+    "EO": {
+      "latex": "ЭО",
+      "description": "Энергоотдача"
+    },
+    "EE": {
+      "latex": "ЭЕ",
+      "description": "Энергоёмкость"
+    },
+    "VP": {
+      "latex": "ВП",
+      "description": "Выпуск продукции"
+    },
+    "MZ": {
+      "latex": "МЗ",
+      "description": "Материальные затраты"
+    },
+    "EZ": {
+      "latex": "ЭЗ",
+      "description": "Энергетические затраты"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ MO }}=\\frac{ {{ VP }} }{ {{ MZ }} } $$",
+      "description": "",
+      "varIds": ["MO", "VP", "MZ"]
+    },
+    {
+      "latex": "$$ {{ ME }}=\\frac{ {{ MZ }} }{ {{ VP }} } $$",
+      "description": "",
+      "varIds": ["ME", "VP", "MZ"]
+    },
+    {
+      "latex": "$$ {{ EO }}=\\frac{ {{ VP }} }{ {{ EZ }} } $$",
+      "description": "",
+      "varIds": ["EO", "VP", "EZ"]
+    },
+    {
+      "latex": "$$ {{ EZ }}=\\frac{ {{ EO }} }{ {{ VP }} } $$",
+      "description": "",
+      "varIds": ["EO", "VP", "EZ"]
+    }
+  ]
+}

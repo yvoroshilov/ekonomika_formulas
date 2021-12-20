@@ -1,0 +1,62 @@
+{
+  "topic": "Topic4",
+  "variables": {
+    "Kekst": {
+      "latex": "К_{экст}",
+      "description": "Коэффициент экстенсивной загрузки оборудывания"
+    },
+    "If": {
+      "latex": "И_{ф}",
+      "description": "Износ физический"
+    },
+    "Im1": {
+      "latex": "И_{м1}",
+      "description": "Износ моральный 1"
+    },
+    "Im2": {
+      "latex": "И_{м2}",
+      "description": "Износ моральный 2"
+    },
+    "Tf": {
+      "latex": "T_{ф}",
+      "description": "Фактический срок службы"
+    },
+    "Tn": {
+      "latex": "T_{н}",
+      "description": "Нормативный срок службы"
+    },
+    "Pn": {
+      "latex": "П_{н}",
+      "description": "Производительность нового оборудования"
+    },
+    "Ps": {
+      "latex": "П_{c}",
+      "description": "Производительность старого оборудования"
+    },
+    "OSperv": {
+      "latex": "ОС_{перв}",
+      "description": "Первоначальная стоимость основных средств"
+    },
+    "OSvost": {
+      "latex": "ОС_{вост}",
+      "description": "Восстановительная стоимость основных средств"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ If }}=\\frac{ {{ Tf }} }{ {{ Tn }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["If", "Tf", "Tn"]
+    },
+    {
+      "latex": "$$ {{ Im1 }}=\\frac{ {{ OSperv }}  - {{ OSvost }} }{ {{ OSperv }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Im1", "OSperv", "OSvost"]
+    },
+    {
+      "latex": "$$ {{ Im2 }}=\\frac{ {{ Pn }}  - {{ Ps }} }{ {{ Pn }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Im2", "Pn", "Ps"]
+    }
+  ]
+}

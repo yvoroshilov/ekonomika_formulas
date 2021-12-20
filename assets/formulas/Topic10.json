@@ -1,0 +1,107 @@
+{
+  "topic": "Оплата труда",
+  "variables": {
+    "ZP": {
+      "latex": "ЗП_{пр-сд}",
+      "description": "Зарплата прямая сдельная"
+    },
+    "ZP2": {
+      "latex": "ЗП_{сд-пр}",
+      "description": "Зарплата сдельно-премиальная"
+    },
+    "Rsd": {
+      "latex": "Р_{сд}",
+      "description": "Сдельная расценка"
+    },
+    "VPf": {
+      "latex": "ВП_{ф}",
+      "description": "Фактический выпуск продукции"
+    },
+    "VPn": {
+      "latex": "ВП_{н}",
+      "description": "Номинальный выпуск продукции"
+    },
+    "TSch": {
+      "latex": "ТС_{ч}",
+      "description": "Часовая тарифная ставка"
+    },
+    "Nvr": {
+      "latex": "Н_{вр}",
+      "description": "Норма времени"
+    },
+    "Nvyr": {
+      "latex": "Н_{выр}",
+      "description": "Норма выработки"
+    },
+    "TK": {
+      "latex": "ТК",
+      "description": "Тарифный коэффициент"
+    },
+    "P": {
+      "latex": "р",
+      "description": "Премия за выполнения плана в %"
+    },
+    "K": {
+      "latex": "к",
+      "description": "Премия за каждый процент перевыполнения плана"
+    },
+    "n": {
+      "latex": "n",
+      "description": "Сам процент выполнения плана %"
+    },
+    "ZPpovrprem": {
+      "latex": "ЗП_{повр-прям}",
+      "description": "Повременно-премиальная ЗП"
+    },
+    "ZPppovr": {
+      "latex": "ЗП_{п-повр}",
+      "description": "Прямая повременная ЗП"
+    },
+    "Totr": {
+      "latex": "Т_{отр}",
+      "description": "Отработанное время"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ ZP }}={{ Rsd }} \\times {{ VPf }} $$",
+      "description": "",
+      "varIds": ["ZP", "Rsd", "VPf"]
+    },
+    {
+      "latex": "$$ {{ ZP2 }}={{ Rsd }} \\times {{ VPf }} \\times (1 + \\frac{ {{ P }} + {{ K }} \\times {{ n }} }{ 100\\%}) $$",
+      "description": "",
+      "varIds": ["ZP2","Rsd", "VPf", "P", "K", "n"]
+    },
+    {
+      "latex": "$$ {{ TSch }}(n-я)={{ TSch }}(i-я) \\times {{ TK }}(n-я) $$",
+      "description": "",
+      "varIds": ["TSch", "TSch", "TK"]
+    },
+    {
+      "latex": "$$ {{ Rsd }}={{ TSch }}(n-я) \\times {{ Nvr }} =\\frac{ {{ TSch }}(n-я) }{ {{ Nvr }} } $$",
+      "description": "",
+      "varIds": ["TSch", "Rsd", "Nvr"]
+    },
+    {
+      "latex": "$$ {{ n }}=\\frac{ {{ VPf }} }{ {{ VPn }} }\\times 100\\% - 100\\% $$",
+      "description": "",
+      "varIds": ["VPf", "VPn", "n"]
+    },
+    {
+      "latex": "$$ {{ ZP }}={{ Rsd }} \\times {{ VPf }} $$",
+      "description": "",
+      "varIds": ["ZP", "Rsd", "VPf"]
+    },
+    {
+      "latex": "$$ {{ ZPppovr }}={{ TSch }} \\times {{ Totr }} $$",
+      "description": "",
+      "varIds": ["ZPppovr", "TSch", "Totr"]
+    },
+    {
+      "latex": "$$ {{ ZPpovrprem }}={{ TSch }} \\times {{ Totr }} \\times (1 + \\frac{ {{ Totr }} }{ 100\\% })$$",
+      "description": "",
+      "varIds": ["ZPpovrprem", "TSch", "Totr"]
+    }
+  ]
+}

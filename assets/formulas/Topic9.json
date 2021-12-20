@@ -1,0 +1,68 @@
+{
+  "topic": "Кадры",
+  "variables": {
+    "Kpr": {
+      "latex": "К_{пр}",
+      "description": "Коэффициент оборота по приёму"
+    },
+    "Kvyb": {
+      "latex": "К_{выб}",
+      "description": "Коэффициент оборота по выбытию"
+    },
+    "Kob": {
+      "latex": "К_{об}",
+      "description": "Коэффициент общего оборота"
+    },
+    "Ktek": {
+      "latex": "К_{тек}",
+      "description": "Коэффициент текучести кадров"
+    },
+    "Kst": {
+      "latex": "К_{ст}",
+      "description": "Коэффициент стабильности кадров"
+    },
+    "CHpr": {
+      "latex": "Ч_{пр}",
+      "description": "Численность принятых"
+    },
+    "CHvyb": {
+      "latex": "Ч_{выб}",
+      "description": "Численность выбывших"
+    },
+    "CHuv": {
+      "latex": "Ч'_{ув}",
+      "description": "Численность уволенных за нарушение трудовой дисциплины и по собственному"
+    },
+    "SSCH": {
+      "latex": "ССЧ",
+      "description": "Среднесписочная численность"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ Kpr }}=\\frac{ {{ CHpr }} }{ {{ SSCH }} } $$",
+      "description": "",
+      "varIds": ["Kpr", "CHpr", "SSCH"]
+    },
+    {
+      "latex": "$$ {{ Ktek }}=\\frac{ {{ CHuv }} }{ {{ SSCH }} } $$",
+      "description": "",
+      "varIds": ["Ktek", "CHuv", "SSCH"]
+    },
+    {
+      "latex": "$$ {{ Kvyb }}=\\frac{ {{ CHvyb }} }{ {{ SSCH }} } $$",
+      "description": "",
+      "varIds": ["Kvyb", "CHvyb", "SSCH"]
+    },
+    {
+      "latex": "$$ {{ Kst }}=1 - \\frac{ {{ CHuv }} }{ {{ SSCH }} + {{ CHpr }} } $$",
+      "description": "",
+      "varIds": ["Kst", "CHuv", "SSCH", "CHpr"]
+    },
+    {
+      "latex": "$$ {{ Kob }}=\\frac{ {{ CHpr }} + {{ CHvyb }} }{ {{ SSCH }} } $$",
+      "description": "",
+      "varIds": ["Kob", "CHpr", "SSCH", "CHvyb"]
+    }
+  ]
+}

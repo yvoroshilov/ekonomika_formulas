@@ -1,0 +1,108 @@
+{
+  "topic": "Topic5",
+  "variables": {
+    "Na": {
+      "latex": "Н_{а}",
+      "description": "Норма амортизации"
+    },
+    "Tn": {
+      "latex": "T_{н}",
+      "description": "Нормативный срок службы"
+    },
+    "AO": {
+      "latex": "АО",
+      "description": "Амортизационные отчисления"
+    },
+    "Nausl": {
+      "latex": "Н_{а усл}",
+      "description": "Условная норма амортизации"
+    },
+    "n": {
+      "latex": "n",
+      "description": "Количество предстоящих лет работы"
+    },
+    "Tusl": {
+      "latex": "Т_{усл}",
+      "description": "Условновный срок службы (сумма чисел лет работы)"
+    },
+    "Tpi": {
+      "latex": "Т_{пи}",
+      "description": "Срок полезного использования"
+    },
+    "Naln": {
+      "latex": "Н_{алн}",
+      "description": "Норма амортизации расчитанная минимальным методом"
+    },
+    "Ku": {
+      "latex": "К_{у}",
+      "description": "Коэффициент ускорения"
+    },
+    "VPi": {
+      "latex": "ВП_{i}",
+      "description": "Выпуск продукции за конкретный период"
+    },
+    "VPobshch": {
+      "latex": "ВП_{общ (пл)}",
+      "description": "Выпуск продукции общий (плановый)"
+    },
+    "OSlikvid": {
+      "latex": "П_{н}",
+      "description": "Ликвидационная стоимость основных средств"
+    },
+    "OSperv": {
+      "latex": "ОС_{перв}",
+      "description": "Первоначальная стоимость основных средств"
+    },
+    "OSost": {
+      "latex": "ОС_{ост}",
+      "description": "Остаточная стоимость основных средств"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ Na }}=\\frac{ {{ OSperv }} - {{ OSlikvid }}}{ {{ OSperv }} } \\times 100\\% = \\frac{ 1 }{ {{ Tn }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Na", "OSperv", "OSlikvid", "Tn"]
+    },
+    {
+      "latex": "$$ {{ AO }}=\\frac{ {{ OSperv }} \\times {{ Na }}}{ 100\\ } $$",
+      "description": "",
+      "varIds": ["Na", "OSperv", "AO"]
+    },
+    {
+      "latex": "$$ {{ Na }}={{ Nausl }} \\times {{ n }} $$",
+      "description": "",
+      "varIds": ["Na", "n", "Nausl"]
+    },
+    {
+      "latex": "$$ {{ Nausl }}=\\frac{ 1 }{ {{ Tusl }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Tusl", "Nausl"]
+    },
+    {
+      "latex": "$$ {{ Tusl }}=\\frac{ {{ Tpi }}({{ Tpi }} + 1)}{ 2 } $$",
+      "description": "",
+      "varIds": ["Tusl", "Tpi"]
+    },
+    {
+      "latex": "$$ {{ AO }}=\\frac{ {{ OSperv }} \\times {{ Na }} }{ 100\\% } $$",
+      "description": "",
+      "varIds": ["AO", "OSperv", "Na"]
+    },
+    {
+      "latex": "$$ {{ Na }}={{ Naln }} \\times {{ Ku }} = \\frac{ 1 }{ {{ Tn }} } \\times {{ Ku }} \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Na", "Naln", "Ku", "Tn"]
+    },
+    {
+      "latex": "$$ {{ AO }}=\\frac{ {{ OSost }} \\times {{ Na }} }{ 100\\% } $$",
+      "description": "",
+      "varIds": ["AO", "OSost", "Na"]
+    },
+    {
+      "latex": "$$ {{ Na }}=\\frac{ {{ VPi }} }{ {{ VPobshch }} } \\times 100\\% $$",
+      "description": "",
+      "varIds": ["Na", "VPi", "VPobshch"]
+    }
+  ]
+}
