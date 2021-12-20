@@ -121,21 +121,19 @@ class _GamePage extends State<GamePage> {
     for (int index = 0; index < count; index++) {
       variants.add(TeXViewInkWell(
         id: vars[index].id,
-        child: TeXViewDocument(
-          r'$$ ' + vars[index].latex + r' $$',
-          style: const TeXViewStyle(
-            height: 50,
-            margin: TeXViewMargin.only(top: 4, bottom: 4),
-            textAlign: TeXViewTextAlign.Center,
-            // backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
-            backgroundColor: Colors.white,
-            borderRadius: TeXViewBorderRadius.all(20),
-            border: TeXViewBorder.all(TeXViewBorderDecoration(
-              borderWidth: 1,
-              borderColor: Colors.black,
-              borderStyle: TeXViewBorderStyle.Solid,
-            )),
-          ),
+        child: TeXViewDocument(r'$$ ' + vars[index].latex + r' $$'),
+        style: const TeXViewStyle(
+          height: 50,
+          margin: TeXViewMargin.only(top: 4, bottom: 4),
+          textAlign: TeXViewTextAlign.Center,
+          // backgroundColor: HexColor.fromHex(MyColors.backgroundColor),
+          backgroundColor: Colors.white,
+          borderRadius: TeXViewBorderRadius.all(20),
+          border: TeXViewBorder.all(TeXViewBorderDecoration(
+            borderWidth: 1,
+            borderColor: Colors.black,
+            borderStyle: TeXViewBorderStyle.Solid,
+          )),
         ),
         onTap: (id) {
           if (resultText != null) return;
