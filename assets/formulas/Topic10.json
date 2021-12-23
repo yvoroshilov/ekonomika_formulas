@@ -42,20 +42,20 @@
       "description": "Премия за выполнения плана в %"
     },
     "K": {
-      "latex": "к",
-      "description": "Премия за каждый процент перевыполнения плана"
+      "latex": "k",
+      "description": "Премия за каждый процент перевыполнения плана в %"
     },
     "n": {
       "latex": "n",
       "description": "Сам процент выполнения плана %"
     },
     "ZPpovrprem": {
-      "latex": "ЗП_{повр-прям}",
+      "latex": "ЗП_{повр-прем}",
       "description": "Повременно-премиальная ЗП"
     },
     "ZPppovr": {
-      "latex": "ЗП_{п-повр}",
-      "description": "Прямая повременная ЗП"
+      "latex": "ЗП_{пр-повр}",
+      "description": "Простая повременная ЗП"
     },
     "Totr": {
       "latex": "Т_{отр}",
@@ -69,17 +69,22 @@
       "varIds": ["ZP", "Rsd", "VPf"]
     },
     {
-      "latex": "$$ {{ ZP2 }}={{ Rsd }} \\times {{ VPf }} \\times (1 + \\frac{ {{ P }} + {{ K }} \\times {{ n }} }{ 100\\%}) $$",
+      "latex": "$$ {{ Rsd }}={{ TSch }} \\times {{ Nvyr }}=\\frac{ {{ TSch }}(n-го\\ разряда) }{ {{ Nvyr }} } $$",
+      "description": "",
+      "varIds": ["Rsd", "TSch", "Nvyr"]
+    },
+    {
+      "latex": "$$ {{ ZP2 }}={{ Rsd }} \\times {{ VPf }} \\times (1 + \\frac{ {{ P }} + {{ K }} \\times {{ n }} }{ 100 }) $$",
       "description": "",
       "varIds": ["ZP2","Rsd", "VPf", "P", "K", "n"]
     },
     {
-      "latex": "$$ {{ TSch }}(n-я)={{ TSch }}(i-я) \\times {{ TK }}(n-я) $$",
+      "latex": "$$ {{ TSch }}(n-го\\ разряда)={{ TSch }}(1-го\\ разряда) \\times {{ TK }}(n-го\\ разряда) $$",
       "description": "",
       "varIds": ["TSch", "TSch", "TK"]
-    },
+    } ,
     {
-      "latex": "$$ {{ Rsd }}={{ TSch }}(n-я) \\times {{ Nvr }} =\\frac{ {{ TSch }}(n-я) }{ {{ Nvr }} } $$",
+      "latex": "$$ {{ Rsd }}={{ TSch }}(n-го\\ разряда) \\times {{ Nvr }} =\\frac{ {{ TSch }}(n-го\\ разряда) }{ {{ Nvr }} } $$",
       "description": "",
       "varIds": ["TSch", "Rsd", "Nvr"]
     },
@@ -94,12 +99,12 @@
       "varIds": ["ZP", "Rsd", "VPf"]
     },
     {
-      "latex": "$$ {{ ZPppovr }}={{ TSch }} \\times {{ Totr }} $$",
+      "latex": "$$ {{ ZPppovr }}={{ TSch }}(n-го\\ разряда) \\times {{ Totr }} $$",
       "description": "",
       "varIds": ["ZPppovr", "TSch", "Totr"]
     },
     {
-      "latex": "$$ {{ ZPpovrprem }}={{ TSch }} \\times {{ Totr }} \\times (1 + \\frac{ {{ Totr }} }{ 100\\% })$$",
+      "latex": "$$ {{ ZPpovrprem }}={{ TSch }}(n-го\\ разряда) \\times {{ Totr }} \\times (1 + \\frac{ {{ Totr }} }{ 100\\% })$$",
       "description": "",
       "varIds": ["ZPpovrprem", "TSch", "Totr"]
     }

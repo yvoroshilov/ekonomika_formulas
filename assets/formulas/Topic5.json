@@ -1,5 +1,5 @@
 {
-  "topic": "Topic5",
+  "topic": "Амортизация",
   "variables": {
     "Na": {
       "latex": "Н_{а}",
@@ -14,7 +14,7 @@
       "description": "Амортизационные отчисления"
     },
     "Nausl": {
-      "latex": "Н_{а усл}",
+      "latex": "Н_{а\\ усл}",
       "description": "Условная норма амортизации"
     },
     "n": {
@@ -30,8 +30,8 @@
       "description": "Срок полезного использования"
     },
     "Naln": {
-      "latex": "Н_{алн}",
-      "description": "Норма амортизации расчитанная минимальным методом"
+      "latex": "Н_{а\\ лн}",
+      "description": "Норма амортизации расчитанная линейным методом"
     },
     "Ku": {
       "latex": "К_{у}",
@@ -60,7 +60,7 @@
   },
   "formulas": [
     {
-      "latex": "$$ {{ Na }}=\\frac{ {{ OSperv }} - {{ OSlikvid }}}{ {{ OSperv }} } \\times 100\\% = \\frac{ 1 }{ {{ Tn }} } \\times 100\\% $$",
+      "latex": "$$ {{ Na }} = \\frac{ 1 }{ {{ Tn }} } \\times 100\\% $$",
       "description": "",
       "varIds": ["Na", "OSperv", "OSlikvid", "Tn"]
     },

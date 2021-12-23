@@ -1,5 +1,5 @@
 {
-  "topic": "Topic1",
+  "topic": "Основные средства",
   "variables": {
     "OSperv": {
       "latex": "ОС_{перв}",
@@ -18,7 +18,7 @@
       "description": "Строительно-монтажные работы"
     },
     "OSvost": {
-      "latex": "ОС_{вост}",
+      "latex": "ОС_{восст}",
       "description": "Восстановительная стоимость основных средств"
     },
     "Kpereocenki": {
@@ -45,7 +45,7 @@
       "varIds": ["OSperv", "TZR", "SMR", "C"]
     },
     {
-      "latex": "$$ {{ OSvost }}={{ OSperv }} + {{ Kpereocenki }} $$",
+      "latex": "$$ {{ OSvost }}={{ OSperv }} \\times {{ Kpereocenki }} $$",
       "description": "",
       "varIds": ["OSperv", "Kpereocenki", "OSvost"]
     },
@@ -55,7 +55,7 @@
       "varIds": ["OSost", "OSperv", "AO"]
     },
     {
-      "latex": "$$ {{ AO }}=\\frac{ {{ Na }} + {{ OSperv }} }{ 100\\% } $$",
+      "latex": "$$ {{ AO }}=\\frac{ {{ OSperv }} \\times {{ Na }} }{ 100\\% } $$",
       "description": "",
       "varIds": ["AO", "Na", "OSperv"]
     }

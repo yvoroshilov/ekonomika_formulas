@@ -1,0 +1,97 @@
+{
+  "topic": "Оборотные средства",
+  "variables": {
+    "Kob": {
+      "latex": "К_{об}",
+      "description": "Коэффициент оборачиваемости"
+    },
+    "RP": {
+      "latex": "РП",
+      "description": "Объем реализованной продукции в стоимостном выражении"
+    },
+    "RPbaz": {
+      "latex": "РП_{баз}",
+      "description": "Объем реализованной продукции в стоимостном выражении базовый"
+    },
+    "RPpl": {
+      "latex": "РП_{пл}",
+      "description": "Объем реализованной продукции в стоимостном выражении планируемый"
+    },
+    "ObS": {
+      "latex": "ОбС",
+      "description": "Сумма оборотных средств или среднегодовой остаток ОбС"
+    },
+    "Kzagr": {
+      "latex": "К_{загр}",
+      "description": "Коэффициент загрузки"
+    },
+    "deltaRP": {
+      "latex": "\\Delta РП",
+      "description": "Разность объемов реализованной продукции в стоимостном выражении"
+    },
+    "Tob": {
+      "latex": "Т_{об}",
+      "description": "Длительность одного оборота"
+    },
+    "Tobbaz": {
+      "latex": "Т_{об\\ баз}",
+      "description": "Длительность одного оборота базовая"
+    },
+    "Tobpl": {
+      "latex": "Т_{об\\ пл}",
+      "description": "Длительность одного оборота планируемая"
+    },
+    "Dk": {
+      "latex": "Д_{к}",
+      "description": "Количество дней в периоде (год - 360, квартал - 90, месяц - 30)"
+    },
+    "deltaObSa": {
+      "latex": "\\Delta ОбС_{а}",
+      "description": "Абсолютное высвобождение оборотных средств"
+    },
+    "deltaObSo": {
+      "latex": "\\Delta ОбС_{о}",
+      "description": "Относительное высвобождение оборотных средств"
+    },
+    "ObSbaz": {
+      "latex": "ОбС_{баз}",
+      "description": "Оборотные средства базисные"
+    },
+    "ObSpl": {
+      "latex": "ОбС_{пл}",
+      "description": "Оборотные средства планируемые"
+    }
+  },
+  "formulas": [
+    {
+      "latex": "$$ {{ Kob }}=\\frac{ {{ RP }} }{ {{ ObS }} } $$",
+      "description": "",
+      "varIds": ["Kob", "RP", "ObS"]
+    },
+    {
+      "latex": "$$ {{ Tob }}=\\frac{ {{ Dk }} }{ {{ Kob }} } $$",
+      "description": "",
+      "varIds": ["Tob", "Dk", "Kob"]
+    },
+    {
+      "latex": "$$ {{ Kzagr }}=\\frac{ 1 }{ {{ Kob }} }=\\frac{ {{ ObS }} }{ {{ RP }} } $$",
+      "description": "",
+      "varIds": ["Kzagr", "Kob", "ObS", "RP"]
+    },
+    {
+      "latex": "$$ {{ deltaRP }}={{ RPpl }} - {{ RPbaz }} $$",
+      "description": "",
+      "varIds": ["deltaRP", "RPpl", "RPbaz"]
+    },
+    {
+      "latex": "$$ {{ deltaObSa }}={{ ObSbaz }} - {{ ObSpl }} $$",
+      "description": "",
+      "varIds": ["deltaObSa", "ObSbaz", "ObSpl"]
+    },
+    {
+      "latex": "$$ {{ deltaObSo }}=\\frac{ ({{ Tobbaz }} - {{ Tobpl }}) \\times {{ RPpl }} }{ {{ Dk }} } $$",
+      "description": "",
+      "varIds": ["deltaObSo", "Tobbaz", "Tobpl", "RPpl", "Dk"]
+    }
+  ]
+}

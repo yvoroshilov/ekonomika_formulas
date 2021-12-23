@@ -25,8 +25,8 @@
       "latex": "У_{б}",
       "description": "Уровень безубыточности"
     },
-    "Ukr": {
-      "latex": "У_{кр}",
+    "Ckr": {
+      "latex": "Ц_{кр}",
       "description": "Критическая цена"
     },
     "Zpost": {
@@ -62,12 +62,12 @@
       "description": "Темпы прироста"
     },
     "Otchper": {
-      "latex": "Отчетный\\ период",
-      "description": "Отчетный период"
+      "latex": "ВП_{отчетный\\ период}",
+      "description": "Выпуск продукции в отчётном периоде"
     },
     "Plper": {
-      "latex": "Плановый\\ период",
-      "description": "Плановый период"
+      "latex": "ВП_{плановый\\ период}",
+      "description": "Выпуск продукции в плановом периоде"
     },
     "Z1rub": {
       "latex": "З_{1руб}",
@@ -115,7 +115,7 @@
     },
     "Ced": {
       "latex": "С^{ед}",
-      "description": "Себестоимость еденицы"
+      "description": "Себестоимость единицы"
     },
     "Zsov": {
       "latex": "З_{сов}",
@@ -145,9 +145,9 @@
       "latex": "В_{пл}",
       "description": "Выручка (плановая)"
     },
-    "Vper": {
-      "latex": "В_{пер}",
-      "description": "Выручка (переменная)"
+    "Vpor": {
+      "latex": "В_{пор}",
+      "description": "Выручка (пороговая)"
     }
   },
   "formulas": [
@@ -217,9 +217,9 @@
       "varIds": ["Ub","Tb","VP"]
     },
     {
-      "latex": "$$ {{ Ukr }}=\\frac{ {{ Zpostob }} }{ {{ Tb }} } + {{ Zpered }} $$",
+      "latex": "$$ {{ Ckr }}=\\frac{ {{ Zpostob }} }{ {{ Tb }} } + {{ Zpered }} $$",
       "description": "",
-      "varIds": ["Zpostob","Tb","Zpered", "Ukr"]
+      "varIds": ["Zpostob","Tb","Zpered", "Ckr"]
     },
     {
       "latex": "$$ {{ Ced }}={{ Zposted }} + {{ Zpered }} $$",
@@ -267,7 +267,7 @@
       "varIds": ["Rprocii","V", "S"]
     },
     {
-      "latex": "$$ \\frac{ {{ Rprocii }} }{ 100\\% } \\times 100\\%={{ V }} - {{ S }} $$",
+      "latex": "$$ \\frac{ {{ Rprocii }} }{ 100\\% } \\times {{ S }} ={{ V }} - {{ S }} $$",
       "description": "",
       "varIds": ["Rprocii","V", "S"]
     },
@@ -277,9 +277,9 @@
       "varIds": ["Rprocii","V", "S"]
     },
     {
-      "latex": "$$ {{ ZFP }}={{ Vpl }} - {{ Vper }} $$",
+      "latex": "$$ {{ ZFP }}={{ Vpl }} - {{ Vpor }} $$",
       "description": "",
-      "varIds": ["ZFP","Vpl", "Vper"]
+      "varIds": ["ZFP","Vpl", "Vpor"]
     }
   ]
 }
