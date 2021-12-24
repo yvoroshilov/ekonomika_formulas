@@ -1,6 +1,30 @@
 {
-  "topic": "Кадры",
+  "topic": "Кадры, выработка",
   "variables": {
+    "Vnat": {
+      "latex": "В_{нат}",
+      "description": "Выработка рассчитанная натуральным способом"
+    },
+    "Vst": {
+      "latex": "В_{ст}",
+      "description": "Выработка рассчитанная стоимостным способом"
+    },
+    "Vtr": {
+      "latex": "В_{тр}",
+      "description": "Выработка рассчитанная трудовым способом"
+    },
+    "VP": {
+      "latex": "ВП",
+      "description": "Выпуск продукции"
+    },
+    "TRnorm": {
+      "latex": "ТР_{норм}",
+      "description": "Нормативная трудоемкость"
+    },
+    "C": {
+      "latex": "Ц",
+      "description": "Цена"
+    },
     "Kpr": {
       "latex": "К_{пр}",
       "description": "Коэффициент оборота по приёму"
@@ -40,9 +64,19 @@
   },
   "formulas": [
     {
-      "latex": "$$ {{ Kpr }}=\\frac{ {{ CHpr }} }{ {{ SSCH }} } $$",
+      "latex": "$$ {{ Vnat }}=\\frac{ {{ VP }}(в\\ нат.\\ выражении) }{ {{ SSCH }} }[\\frac{шт}{чел}] $$",
       "description": "",
-      "varIds": ["Kpr", "CHpr", "SSCH"]
+      "varIds": ["Vnat", "VP", "SSCH"]
+    },
+    {
+      "latex": "$$ {{ Vst }}=\\frac{ {{ VP }}(в\\ стоим.\\ выражении) \\times {{ C }} }{ {{ SSCH }} }[\\frac{руб}{чел}] $$",
+      "description": "",
+      "varIds": ["Vst", "VP", "C", "SSCH"]
+    },
+    {
+      "latex": "$$ {{ Vtr }}=\\frac{ {{ VP }} \\times {{ TRnorm }} }{ {{ SSCH }} }[\\frac{нормо-часов}{чел}] $$",
+      "description": "",
+      "varIds": ["Vtr", "VP", "TRnorm", "SSCH"]
     },
     {
       "latex": "$$ {{ Ktek }}=\\frac{ {{ CHuv }} }{ {{ SSCH }} } $$",

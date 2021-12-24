@@ -29,6 +29,7 @@ class _TopicsPageState extends State<TopicsPage> {
   @override
   Widget build(BuildContext context) {
     List<Tuple2<String, List<Formula>>> topics = mainData.item1;
+    topics.sort((a, b) => a.item1.compareTo(b.item1));
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
